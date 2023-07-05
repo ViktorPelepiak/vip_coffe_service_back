@@ -1,0 +1,17 @@
+com\vip\coffeeservice\model\MessageHistory.class
+com\vip\coffeeservice\repository\UserRepository.class
+com\vip\coffeeservice\model\Task.class
+com\vip\coffeeservice\model\CoffeeMachine.class
+com\vip\coffeeservice\model\MessageThreadStatus.class
+com\vip\coffeeservice\model\PartCharacteristic.class
+com\vip\coffeeservice\model\MessageThread.class
+com\vip\coffeeservice\model\CharacteristicType.class
+com\vip\coffeeservice\model\TaskStatus.class
+com\vip\coffeeservice\model\PartType.class
+com\vip\coffeeservice\VipCoffeeServiceApplication.class
+com\vip\coffeeservice\model\CoffeeMachineModel.class
+com\vip\coffeeservice\model\TaskType.class
+com\vip\coffeeservice\model\User.class
+com\vip\coffeeservice\controller\PingController.class
+com\vip\coffeeservice\model\CoffeeMachineBrand.class
+com\vip\coffeeservice\enums\UserRole.class
