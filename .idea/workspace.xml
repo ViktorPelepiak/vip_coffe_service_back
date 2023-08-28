@@ -5,15 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="571f2d3b-a223-4b2a-b10d-67924ffd13c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/controller/CoffeeMachineBrandController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/dto/EditBrandDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/dto/SaveBrandDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/repository/CoffeeMachineBrandRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/services/CoffeeMachineBrandService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/services/impl/CoffeeMachineBrandServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/controller/CoffeeMachineModelController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/dto/CoffeeMachineModelDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/dto/EditModelDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/dto/SaveModelDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/repository/CoffeeMachineModelRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/services/CoffeeMachineModelService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/services/impl/CoffeeMachineModelServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/model/CoffeeMachineBrand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/model/CoffeeMachineBrand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vip/coffee/service/model/CoffeeMachineBrand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vip/coffee/service/model/CoffeeMachineBrand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/exceptions/ElementNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/exceptions/ElementNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/model/CoffeeMachineModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/model/CoffeeMachineModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/repository/CoffeeMachineBrandRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/repository/CoffeeMachineBrandRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/services/CoffeeMachineBrandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/services/CoffeeMachineBrandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/services/impl/CoffeeMachineBrandServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vip/coffee/service/services/impl/CoffeeMachineBrandServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vip/coffee/service/config/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vip/coffee/service/config/SecurityConfiguration.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +42,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -73,9 +80,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.vip.coffee.service.dto" />
       <recent name="com.vip.coffee.service.services.impl" />
       <recent name="com.vip.coffee.service.mail" />
-      <recent name="com.vip.coffee.service.dto" />
       <recent name="com.vip.coffeeservice.model" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -96,13 +103,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -182,14 +191,14 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/vip/coffee/service/controller/CoffeeMachineBrandController.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="9" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/vip/coffee/service/controller/CoffeeMachineModelController.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/vip/coffee/service/controller/CoffeeMachineBrandController.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/vip/coffee/service/controller/CoffeeMachineModelController.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

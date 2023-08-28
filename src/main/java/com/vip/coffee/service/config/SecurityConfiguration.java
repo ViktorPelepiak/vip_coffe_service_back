@@ -30,7 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     "/security/token/update", "/security/login"};
     private static final String[] RESOURCE_URLS = {"/resources/**"};
     private static final String[] BLACK_LIST_URLS = {};
-    private static final String[] ADMIN_URLS = {};
+    private static final String[] ADMIN_URLS = {"machine/brand/**", "machine/model/**"};
 
     private final Environment environment;
     private final UserService userService;
