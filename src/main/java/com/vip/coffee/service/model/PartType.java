@@ -12,4 +12,22 @@ public class PartType {
 
     @Column(name = "type")
     private String type;
+
+    public Long getId() {
+        return id;
+    }
+
+    public PartType setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public PartType setType(String type) {
+        this.type = type;
+        return this;
+    }
 }
