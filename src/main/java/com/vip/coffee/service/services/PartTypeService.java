@@ -1,7 +1,7 @@
 package com.vip.coffee.service.services;
 
 import com.vip.coffee.service.dto.EditPartTypeDto;
-import com.vip.coffee.service.dto.PartTypeSaveDto;
+import com.vip.coffee.service.dto.SavePartTypeDto;
 import com.vip.coffee.service.exceptions.ElementNotFoundException;
 import com.vip.coffee.service.model.PartType;
 
@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 public interface PartTypeService {
     List<PartType> getAll();
 
-    PartType save(PartTypeSaveDto partType);
+    PartType save(SavePartTypeDto partType);
 
     PartType editPartType(EditPartTypeDto editPartTypeDto) throws NoSuchElementException;
 

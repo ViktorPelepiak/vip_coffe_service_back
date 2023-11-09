@@ -1,13 +1,13 @@
 package com.vip.coffee.service.dto;
 
-public class PartTypeSaveDto {
+public class SavePartTypeDto {
     private String newPartType;
 
     public String getNewPartType() {
         return newPartType;
     }
 
-    public PartTypeSaveDto setNewPartType(String newPartType) {
+    public SavePartTypeDto setNewPartType(String newPartType) {
         this.newPartType = newPartType;
         return this;
     }
