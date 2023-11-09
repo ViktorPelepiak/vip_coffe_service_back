@@ -1,10 +1,7 @@
 package com.vip.coffee.service.controller;
 
-import com.vip.coffee.service.dto.EditBrandDto;
 import com.vip.coffee.service.dto.EditPartTypeDto;
-import com.vip.coffee.service.dto.PartTypeSaveDto;
-import com.vip.coffee.service.dto.SaveBrandDto;
-import com.vip.coffee.service.model.CoffeeMachineBrand;
+import com.vip.coffee.service.dto.SavePartTypeDto;
 import com.vip.coffee.service.model.PartType;
 import com.vip.coffee.service.rest.GenericResponse;
 import com.vip.coffee.service.services.PartTypeService;
@@ -31,8 +28,8 @@ public class PartTypeController {
     }
 
     @PostMapping
-    public GenericResponse<PartType> savePartType(@RequestBody PartTypeSaveDto partTypeSaveDto) {
-        return GenericResponse.of(this.partTypeService.save(partTypeSaveDto));
+    public GenericResponse<PartType> savePartType(@RequestBody SavePartTypeDto savePartTypeDto) {
+        return GenericResponse.of(this.partTypeService.save(savePartTypeDto));
     }
 
     @PutMapping

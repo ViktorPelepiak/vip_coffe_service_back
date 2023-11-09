@@ -15,4 +15,31 @@ public class CharacteristicType {
 
     @Column(name = "measurement_unit")
     private String measurementUnit;
+
+    public Long getId() {
+        return id;
+    }
+
+    public CharacteristicType setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public CharacteristicType setType(String type) {
+        this.type = type;
+        return this;
+    }
+
+    public String getMeasurementUnit() {
+        return measurementUnit;
+    }
+
+    public CharacteristicType setMeasurementUnit(String measurementUnit) {
+        this.measurementUnit = measurementUnit;
+        return this;
+    }
 }

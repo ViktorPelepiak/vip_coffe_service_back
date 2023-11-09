@@ -1,9 +1,8 @@
 package com.vip.coffee.service.services.impl;
 
 import com.vip.coffee.service.dto.EditPartTypeDto;
-import com.vip.coffee.service.dto.PartTypeSaveDto;
+import com.vip.coffee.service.dto.SavePartTypeDto;
 import com.vip.coffee.service.exceptions.ElementNotFoundException;
-import com.vip.coffee.service.model.CoffeeMachineBrand;
 import com.vip.coffee.service.model.PartType;
 import com.vip.coffee.service.repository.PartTypeRepository;
 import com.vip.coffee.service.services.PartTypeService;
@@ -31,7 +30,7 @@ public class PartTypeServiceImpl implements PartTypeService {
     }
 
     @Override
-    public PartType save(PartTypeSaveDto partType) {
+    public PartType save(SavePartTypeDto partType) {
         return partTypeRepository.save(
                 new PartType()
                 .setType(partType.getNewPartType())
