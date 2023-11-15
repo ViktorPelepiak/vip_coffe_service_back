@@ -11,6 +11,8 @@ import java.util.NoSuchElementException;
 public interface CharacteristicTypeService {
     List<CharacteristicType> getAll();
 
+    CharacteristicType getById(Long id) throws NoSuchElementException;
+
     CharacteristicType save(SaveCharacteristicTypeDto characteristicType);
 
     CharacteristicType editCharacteristicType(EditCharacteristicTypeDto editCharacteristicTypeDto)

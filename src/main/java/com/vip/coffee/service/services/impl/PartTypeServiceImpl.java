@@ -30,6 +30,11 @@ public class PartTypeServiceImpl implements PartTypeService {
     }
 
     @Override
+    public PartType getById(Long id) throws NoSuchElementException {
+        return partTypeRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    }
+
+    @Override
     public PartType save(SavePartTypeDto partType) {
         return partTypeRepository.save(
                 new PartType()

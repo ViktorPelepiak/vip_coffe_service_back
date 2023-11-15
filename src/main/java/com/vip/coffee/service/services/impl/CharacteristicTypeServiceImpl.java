@@ -30,6 +30,11 @@ public class CharacteristicTypeServiceImpl implements CharacteristicTypeService 
     }
 
     @Override
+    public CharacteristicType getById(Long id) throws NoSuchElementException {
+        return characteristicTypeRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    }
+
+    @Override
     public CharacteristicType save(SaveCharacteristicTypeDto characteristicType) {
         return characteristicTypeRepository.save(
                 new CharacteristicType()

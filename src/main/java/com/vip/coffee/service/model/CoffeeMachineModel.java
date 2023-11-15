@@ -10,7 +10,7 @@ public class CoffeeMachineModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "brand_id")
     private CoffeeMachineBrand brand;
 

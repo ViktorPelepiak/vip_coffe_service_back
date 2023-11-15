@@ -7,10 +7,13 @@ import com.vip.coffee.service.model.CoffeeMachineBrand;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 public interface CoffeeMachineBrandService {
 
     List<CoffeeMachineBrand> getAll();
+
+    CoffeeMachineBrand getById(Long id) throws NoSuchElementException;
 
     CoffeeMachineBrand save(SaveBrandDto brandDto);
 
