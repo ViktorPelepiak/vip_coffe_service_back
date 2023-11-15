@@ -1,5 +1,6 @@
 package com.vip.coffee.service.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vip.coffee.service.enums.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -29,9 +30,10 @@ public class User implements Serializable, UserDetails {
 
     @ElementCollection(targetClass = UserRole.class)
     @Enumerated(EnumType.STRING)
+    @JsonIgnore
     private Set<UserRole> roles;
 
-    @ManyToMany
+    @OneToMany
     private Set<CoffeeMachine> coffeeMachines;
 
     public Long getId() {

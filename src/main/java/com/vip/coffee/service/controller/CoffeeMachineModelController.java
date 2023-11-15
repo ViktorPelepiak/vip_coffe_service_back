@@ -4,7 +4,6 @@ import com.vip.coffee.service.dto.CoffeeMachineModelDto;
 import com.vip.coffee.service.dto.EditModelDto;
 import com.vip.coffee.service.dto.SaveModelDto;
 import com.vip.coffee.service.exceptions.ElementNotFoundException;
-import com.vip.coffee.service.model.CoffeeMachineModel;
 import com.vip.coffee.service.rest.GenericResponse;
 import com.vip.coffee.service.services.CoffeeMachineModelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("machine/model")
+@RequestMapping("machine/models")
 public class CoffeeMachineModelController {
     private final CoffeeMachineModelService coffeeMachineModelService;
 
@@ -24,12 +23,21 @@ public class CoffeeMachineModelController {
     }
 
     @GetMapping
-    public GenericResponse<List<CoffeeMachineModelDto>> getAllCoffeeMachineBrands() {
+    public GenericResponse<List<CoffeeMachineModelDto>> getAllCoffeeMachineModels() {
         return GenericResponse.of(
                 coffeeMachineModelService.getAll()
                         .stream()
                         .map(CoffeeMachineModelDto::toDto)
                         .collect(Collectors.toList())
+        );
+    }
+
+    @GetMapping("for_brand/{brandId}")
+    public GenericResponse<List<CoffeeMachineModelDto>> getAllCoffeeMachineModelsForBrandWithId(@PathVariable Long brandId) {
+        return GenericResponse.of(
+                coffeeMachineModelService.getAllForBrandWithId(brandId).stream()
+                .map(CoffeeMachineModelDto::toDto)
+                .collect(Collectors.toList())
         );
     }
 

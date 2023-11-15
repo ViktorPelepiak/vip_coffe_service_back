@@ -11,6 +11,8 @@ import java.util.NoSuchElementException;
 public interface PartTypeService {
     List<PartType> getAll();
 
+    PartType getById(Long id) throws NoSuchElementException;
+
     PartType save(SavePartTypeDto partType);
 
     PartType editPartType(EditPartTypeDto editPartTypeDto) throws NoSuchElementException;

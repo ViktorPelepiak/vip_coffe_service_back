@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -27,6 +28,11 @@ public class CoffeeMachineBrandServiceImpl implements CoffeeMachineBrandService 
     @Override
     public List<CoffeeMachineBrand> getAll() {
         return coffeeMachineBrandRepository.getAllByOrderByBrand();
+    }
+
+    @Override
+    public CoffeeMachineBrand getById(Long id) throws NoSuchElementException {
+        return coffeeMachineBrandRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
     @Override

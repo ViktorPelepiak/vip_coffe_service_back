@@ -11,6 +11,10 @@ import java.util.List;
 public interface CoffeeMachineModelService {
     List<CoffeeMachineModel> getAll();
 
+    CoffeeMachineModel getById(Long id) throws ElementNotFoundException;
+
+    List<CoffeeMachineModel> getAllForBrandWithId(Long brandId);
+
     CoffeeMachineModel save(SaveModelDto modelDto) throws ElementNotFoundException;
 
     CoffeeMachineModel editModel(EditModelDto editModelDto) throws ElementNotFoundException;

@@ -33,6 +33,19 @@ public class CoffeeMachineModelServiceImpl implements CoffeeMachineModelService 
     }
 
     @Override
+    public CoffeeMachineModel getById(Long id) throws ElementNotFoundException {
+        return coffeeMachineModelRepository.findFirstById(id)
+                .orElseThrow(ElementNotFoundException::new);
+    }
+
+    @Override
+    public List<CoffeeMachineModel> getAllForBrandWithId(Long brandId) {
+        return coffeeMachineModelRepository.findAllByBrandOrderByModelAsc(
+                coffeeMachineBrandService.getById(brandId)
+        );
+    }
+
+    @Override
     public CoffeeMachineModel save(SaveModelDto modelDto) throws ElementNotFoundException {
         return coffeeMachineModelRepository.save(new CoffeeMachineModel()
         .setModel(modelDto.getModel())
