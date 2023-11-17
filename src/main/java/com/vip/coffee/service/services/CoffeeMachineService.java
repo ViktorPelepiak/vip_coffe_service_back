@@ -15,4 +15,10 @@ public interface CoffeeMachineService {
     CoffeeMachine saveMachine(SaveMachineDto saveMachineDto) throws ElementNotFoundException;
 
     CoffeeMachine saveMachineTemplate(SaveMachineTemplateDto saveMachineTemplateDto) throws ElementNotFoundException;
+
+    CoffeeMachine getTemplateById(Long templateId) throws ElementNotFoundException;
+
+    boolean isMachineWithUniqNumberExist(String uniqMachineNumber);
+
+    CoffeeMachine getById(Long machineId) throws ElementNotFoundException;
 }

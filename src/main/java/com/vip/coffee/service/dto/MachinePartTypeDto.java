@@ -1,5 +1,7 @@
 package com.vip.coffee.service.dto;
 
+import com.vip.coffee.service.model.PartType;
+
 public class MachinePartTypeDto {
     private Long id;
     private String type;
@@ -20,5 +22,11 @@ public class MachinePartTypeDto {
     public MachinePartTypeDto setType(String type) {
         this.type = type;
         return this;
+    }
+
+    public static MachinePartTypeDto toDto(PartType partType) {
+        return new MachinePartTypeDto()
+                .setId(partType.getId())
+                .setType(partType.getType());
     }
 }

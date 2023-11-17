@@ -1,5 +1,7 @@
 package com.vip.coffee.service.dto;
 
+import com.vip.coffee.service.model.PartCharacteristic;
+
 public class CharacteristicsWithValueDto {
     private MachineCharacteristicTypeDto characteristicType;
     private String characteristicTypeVal;
@@ -20,5 +22,11 @@ public class CharacteristicsWithValueDto {
     public CharacteristicsWithValueDto setCharacteristicTypeVal(String characteristicTypeVal) {
         this.characteristicTypeVal = characteristicTypeVal;
         return this;
+    }
+
+    public static CharacteristicsWithValueDto toDto(PartCharacteristic partCharacteristic) {
+        return new CharacteristicsWithValueDto()
+                .setCharacteristicTypeVal(partCharacteristic.getCharacteristicValue())
+                .setCharacteristicType(MachineCharacteristicTypeDto.toDto(partCharacteristic.getCharacteristicType()));
     }
 }
