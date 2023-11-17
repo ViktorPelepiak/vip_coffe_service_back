@@ -1,5 +1,7 @@
 package com.vip.coffee.service.dto;
 
+import com.vip.coffee.service.model.CharacteristicType;
+
 public class MachineCharacteristicTypeDto {
     private Long id;
     private String type;
@@ -30,5 +32,12 @@ public class MachineCharacteristicTypeDto {
     public MachineCharacteristicTypeDto setMeasurementUnit(String measurementUnit) {
         this.measurementUnit = measurementUnit;
         return this;
+    }
+
+    public static MachineCharacteristicTypeDto toDto (CharacteristicType characteristicType) {
+        return new MachineCharacteristicTypeDto()
+                .setId(characteristicType.getId())
+                .setType(characteristicType.getType())
+                .setMeasurementUnit(characteristicType.getMeasurementUnit());
     }
 }

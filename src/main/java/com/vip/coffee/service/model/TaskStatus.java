@@ -11,4 +11,22 @@ public class TaskStatus {
     private Long id;
 
     private String status;
+
+    public Long getId() {
+        return id;
+    }
+
+    public TaskStatus setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public TaskStatus setStatus(String status) {
+        this.status = status;
+        return this;
+    }
 }

@@ -55,9 +55,9 @@ public class CoffeeMachineServiceImpl implements CoffeeMachineService {
                 .setUniqueMachineNumber(saveMachineDto.getUniqMachineNumber())
                 .setAdditionalInformation(saveMachineDto.getAdditionalInformation())
                 .setWarrantyEndDate(LocalDate.of(
-                        Integer.parseInt(date[0]) - 1,
-                        Integer.parseInt(date[1]) - 1,
-                        Integer.parseInt(date[2]) - 1
+                        Integer.parseInt(date[0]),
+                        Integer.parseInt(date[1]),
+                        Integer.parseInt(date[2])
                 ))
         );
     }
@@ -77,5 +77,26 @@ public class CoffeeMachineServiceImpl implements CoffeeMachineService {
         }
 
         return coffeeMachineRepository.save(coffeeMachine);
+    }
+
+    @Override
+    public CoffeeMachine getTemplateById(Long templateId) throws ElementNotFoundException {
+        return coffeeMachineRepository.findFirstTemplateById(templateId).orElseThrow(ElementNotFoundException::new);
+    }
+
+    @Override
+    public boolean isMachineWithUniqNumberExist(String uniqMachineNumber) {
+        try {
+            coffeeMachineRepository.findFirstByUniqueMachineNumber(uniqMachineNumber)
+                    .orElseThrow(ElementNotFoundException::new);
+            return true;
+        } catch (ElementNotFoundException e) {
+            return false;
+        }
+    }
+
+    @Override
+    public CoffeeMachine getById(Long machineId) throws ElementNotFoundException {
+        return coffeeMachineRepository.findById(machineId).orElseThrow(ElementNotFoundException::new);
     }
 }

@@ -1,9 +1,6 @@
 package com.vip.coffee.service.controller;
 
-import com.vip.coffee.service.dto.CoffeeMachineShortDto;
-import com.vip.coffee.service.dto.CoffeeMachineTemplateShortDto;
-import com.vip.coffee.service.dto.SaveMachineDto;
-import com.vip.coffee.service.dto.SaveMachineTemplateDto;
+import com.vip.coffee.service.dto.*;
 import com.vip.coffee.service.exceptions.ElementNotFoundException;
 import com.vip.coffee.service.model.CoffeeMachine;
 import com.vip.coffee.service.rest.GenericResponse;
@@ -30,8 +27,22 @@ public class CoffeeMachineController {
         return GenericResponse.of(
                 coffeeMachineService.getAllMachines().stream()
                         .map(CoffeeMachineShortDto::toDto)
-                .collect(Collectors.toList())
+                        .collect(Collectors.toList())
         );
+    }
+
+    @GetMapping("{machineId}")
+    public GenericResponse<CoffeeMachineDto> getCoffeeMachineBiId(@PathVariable Long machineId) {
+        try {
+            return GenericResponse.of(CoffeeMachineDto.toDto(coffeeMachineService.getById(machineId)));
+        } catch (ElementNotFoundException e) {
+            return GenericResponse.error(e.getMessage());
+        }
+    }
+
+    @GetMapping("exist/{uniqMachineNumber}")
+    public GenericResponse<Boolean> isMachineWithUniqNumberExist(@PathVariable String uniqMachineNumber) {
+        return GenericResponse.of(coffeeMachineService.isMachineWithUniqNumberExist(uniqMachineNumber));
     }
 
     @GetMapping("template")
@@ -41,6 +52,15 @@ public class CoffeeMachineController {
                         .map(CoffeeMachineTemplateShortDto::toDto)
                         .collect(Collectors.toList())
         );
+    }
+
+    @GetMapping("template/{templateId}")
+    public GenericResponse<CoffeeMachineTemplateDto> getTemplateById(@PathVariable Long templateId) {
+        try {
+            return GenericResponse.of(CoffeeMachineTemplateDto.toDto(coffeeMachineService.getTemplateById(templateId)));
+        } catch (ElementNotFoundException e) {
+            return GenericResponse.error(e.getMessage());
+        }
     }
 
     @PostMapping
