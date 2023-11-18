@@ -97,6 +97,8 @@ public class CoffeeMachineServiceImpl implements CoffeeMachineService {
 
     @Override
     public CoffeeMachine getById(Long machineId) throws ElementNotFoundException {
-        return coffeeMachineRepository.findById(machineId).orElseThrow(ElementNotFoundException::new);
+        return coffeeMachineRepository.findById(machineId).orElseThrow(() -> new ElementNotFoundException(
+                String.format("Can't find machine wth id=\"%s\"", machineId)
+        ));
     }
 }
