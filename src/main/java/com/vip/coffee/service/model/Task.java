@@ -1,5 +1,8 @@
 package com.vip.coffee.service.model;
 
+import com.vip.coffee.service.enums.TaskStatus;
+import com.vip.coffee.service.enums.TaskType;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -15,12 +18,10 @@ public class Task {
     @JoinColumn(name = "machine_id")
     private CoffeeMachine coffeeMachine;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "task_type_id")
+    @Enumerated(EnumType.STRING)
     private TaskType type;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "task_status_id")
+    @Enumerated(EnumType.STRING)
     private TaskStatus status;
 
     private String estimation;
