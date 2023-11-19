@@ -21,4 +21,8 @@ public interface CoffeeMachineService {
     boolean isMachineWithUniqNumberExist(String uniqMachineNumber);
 
     CoffeeMachine getById(Long machineId) throws ElementNotFoundException;
+
+    List<CoffeeMachine> getAllMachinesForLoggedUser() throws ElementNotFoundException;
+
+    CoffeeMachine addMachineWithUniqNumber(String uniqNumber) throws ElementNotFoundException;
 }

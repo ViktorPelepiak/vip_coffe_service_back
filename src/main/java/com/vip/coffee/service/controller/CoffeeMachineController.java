@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("machine")
+@RequestMapping("machines")
 public class CoffeeMachineController {
 
     private final CoffeeMachineService coffeeMachineService;
@@ -32,7 +32,7 @@ public class CoffeeMachineController {
     }
 
     @GetMapping("{machineId}")
-    public GenericResponse<CoffeeMachineDto> getCoffeeMachineBiId(@PathVariable Long machineId) {
+    public GenericResponse<CoffeeMachineDto> getCoffeeMachineById(@PathVariable Long machineId) {
         try {
             return GenericResponse.of(CoffeeMachineDto.toDto(coffeeMachineService.getById(machineId)));
         } catch (ElementNotFoundException e) {
@@ -63,6 +63,19 @@ public class CoffeeMachineController {
         }
     }
 
+    @GetMapping("my")
+    GenericResponse<List<CoffeeMachineShortDto>> getAllMachinesForLoggedUser() {
+        try {
+            return GenericResponse.of(
+                    coffeeMachineService.getAllMachinesForLoggedUser().stream()
+                            .map(CoffeeMachineShortDto::toDto)
+                    .collect(Collectors.toList())
+            );
+        } catch (ElementNotFoundException e) {
+            return GenericResponse.error(e.getMessage());
+        }
+    }
+
     @PostMapping
     public GenericResponse<CoffeeMachine> save(@RequestBody SaveMachineDto saveMachineDto) {
         try {
@@ -76,6 +89,15 @@ public class CoffeeMachineController {
     public GenericResponse<CoffeeMachine> save(@RequestBody SaveMachineTemplateDto saveMachineDto) {
         try {
             return GenericResponse.of(coffeeMachineService.saveMachineTemplate(saveMachineDto));
+        } catch (ElementNotFoundException e) {
+            return GenericResponse.error(e.getMessage());
+        }
+    }
+
+    @PostMapping("add")
+    public GenericResponse<CoffeeMachineShortDto> addMachine(@RequestBody String uniqNumber) {
+        try {
+            return GenericResponse.of(CoffeeMachineShortDto.toDto(coffeeMachineService.addMachineWithUniqNumber(uniqNumber)));
         } catch (ElementNotFoundException e) {
             return GenericResponse.error(e.getMessage());
         }

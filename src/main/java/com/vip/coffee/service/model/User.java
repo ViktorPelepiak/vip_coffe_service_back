@@ -33,7 +33,7 @@ public class User implements Serializable, UserDetails {
     @JsonIgnore
     private Set<UserRole> roles;
 
-    @OneToMany
+    @OneToMany(mappedBy = "owner")
     private Set<CoffeeMachine> coffeeMachines;
 
     public Long getId() {
