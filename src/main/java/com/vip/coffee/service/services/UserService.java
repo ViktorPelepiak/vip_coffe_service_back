@@ -12,4 +12,6 @@ public interface UserService extends UserDetailsService {
     List<User> findAllMasters();
 
     User findByUsername(String username) throws ElementNotFoundException;
+
+    User update(User user);
 }

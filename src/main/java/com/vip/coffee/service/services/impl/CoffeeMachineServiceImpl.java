@@ -5,19 +5,20 @@ import com.vip.coffee.service.dto.SaveMachineDto;
 import com.vip.coffee.service.dto.SaveMachineTemplateDto;
 import com.vip.coffee.service.exceptions.ElementNotFoundException;
 import com.vip.coffee.service.model.CoffeeMachine;
+import com.vip.coffee.service.model.User;
 import com.vip.coffee.service.repository.CoffeeMachineRepository;
 import com.vip.coffee.service.services.CoffeeMachineModelService;
 import com.vip.coffee.service.services.CoffeeMachineService;
 import com.vip.coffee.service.services.PartCharacteristicService;
+import com.vip.coffee.service.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -26,14 +27,16 @@ public class CoffeeMachineServiceImpl implements CoffeeMachineService {
     private final CoffeeMachineRepository coffeeMachineRepository;
     private final CoffeeMachineModelService modelService;
     private final PartCharacteristicService partCharacteristicService;
+    private final UserService userService;
 
     @Autowired
     public CoffeeMachineServiceImpl(CoffeeMachineRepository coffeeMachineRepository,
                                     CoffeeMachineModelService modelService,
-                                    PartCharacteristicService partCharacteristicService) {
+                                    PartCharacteristicService partCharacteristicService, UserService userService) {
         this.coffeeMachineRepository = coffeeMachineRepository;
         this.modelService = modelService;
         this.partCharacteristicService = partCharacteristicService;
+        this.userService = userService;
     }
 
     @Override
@@ -51,14 +54,14 @@ public class CoffeeMachineServiceImpl implements CoffeeMachineService {
         String[] date = saveMachineDto.getWarrantyEndDate().split("-");
         return coffeeMachineRepository.save(
                 saveMachineTemplate(saveMachineDto)
-                .setTemplate(false)
-                .setUniqueMachineNumber(saveMachineDto.getUniqMachineNumber())
-                .setAdditionalInformation(saveMachineDto.getAdditionalInformation())
-                .setWarrantyEndDate(LocalDate.of(
-                        Integer.parseInt(date[0]),
-                        Integer.parseInt(date[1]),
-                        Integer.parseInt(date[2])
-                ))
+                        .setTemplate(false)
+                        .setUniqueMachineNumber(saveMachineDto.getUniqMachineNumber())
+                        .setAdditionalInformation(saveMachineDto.getAdditionalInformation())
+                        .setWarrantyEndDate(LocalDate.of(
+                                Integer.parseInt(date[0]),
+                                Integer.parseInt(date[1]),
+                                Integer.parseInt(date[2])
+                        ))
         );
     }
 
@@ -72,7 +75,7 @@ public class CoffeeMachineServiceImpl implements CoffeeMachineService {
             coffeeMachine.setParts(new LinkedList<>());
         }
 
-        for (PartTypesWithCharacteristicsDto ptwc: saveMachineTemplateDto.getPartTypesWithCharacteristics()) {
+        for (PartTypesWithCharacteristicsDto ptwc : saveMachineTemplateDto.getPartTypesWithCharacteristics()) {
             coffeeMachine.getParts().addAll(partCharacteristicService.saveAll(coffeeMachine, ptwc));
         }
 
@@ -100,5 +103,29 @@ public class CoffeeMachineServiceImpl implements CoffeeMachineService {
         return coffeeMachineRepository.findById(machineId).orElseThrow(() -> new ElementNotFoundException(
                 String.format("Can't find machine wth id=\"%s\"", machineId)
         ));
+    }
+
+    @Override
+    public List<CoffeeMachine> getAllMachinesForLoggedUser() throws ElementNotFoundException {
+        return new LinkedList<>(
+                userService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName())
+                        .getCoffeeMachines()
+        );
+    }
+
+    @Override
+    public CoffeeMachine addMachineWithUniqNumber(String uniqNumber) throws ElementNotFoundException {
+        User loggedUser = userService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        CoffeeMachine machine = coffeeMachineRepository.findFirstByUniqueMachineNumber(uniqNumber).orElseThrow(() ->
+                new ElementNotFoundException(
+                        String.format("Can't find machine with uniq number \"%s\"", uniqNumber)
+                )
+        );
+        machine.setOwner(loggedUser);
+        loggedUser.getCoffeeMachines().add(machine);
+        coffeeMachineRepository.save(machine);
+        userService.update(loggedUser);
+
+        return machine;
     }
 }
